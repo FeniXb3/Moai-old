@@ -1,4 +1,5 @@
 #!/bin/bash
-mcs -out:Moai.exe *.cs
+[[ -d Release ]] || mkdir Release
+mcs -out:Release/Moai.exe *.cs
 wait
-mono Moai.exe
+mono Release/Moai.exe
