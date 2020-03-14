@@ -1,6 +1,5 @@
 using System;
 
-
 namespace Moai.OutputHandlers
 {
   public class ConsoleOutputHandler : IOutputHandler
@@ -13,6 +12,12 @@ namespace Moai.OutputHandlers
     public void Clear()
     {
       Console.Clear();
+    }
+
+    public void WriteAt(int x, int y, char sign)
+    {
+      Console.SetCursorPosition(x, y);
+      Console.Write(sign);
     }
   }
 }

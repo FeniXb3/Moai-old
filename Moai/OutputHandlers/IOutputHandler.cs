@@ -4,5 +4,6 @@ namespace Moai.OutputHandlers
   {
     void WriteLine(string text);
     void Clear();
+    void WriteAt(int x, int y, char sign);
   }
 }
