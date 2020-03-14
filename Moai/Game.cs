@@ -18,6 +18,7 @@ namespace Moai
     {
       outputHandler.WriteLine("Welcome to Moai 🗿");
       inputHandler.PressAnyKey();
+      outputHandler.Clear();
     }
   }
 }

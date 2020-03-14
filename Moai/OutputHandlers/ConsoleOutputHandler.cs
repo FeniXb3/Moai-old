@@ -8,5 +8,10 @@ namespace Moai.OutputHandlers
     {
       Console.WriteLine(text);
     }
+
+    public void Clear()
+    {
+      Console.Clear();
+    }
   }
 }
