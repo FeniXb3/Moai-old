@@ -19,6 +19,9 @@ namespace Moai
       outputHandler.WriteLine("Welcome to Moai 🗿");
       inputHandler.PressAnyKey();
       outputHandler.Clear();
+      var board = new Board();
+
+      board.Display(outputHandler);
     }
   }
 }

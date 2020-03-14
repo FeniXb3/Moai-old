@@ -1,5 +1,6 @@
 using System;
 
+
 namespace Moai.OutputHandlers
 {
   public class ConsoleOutputHandler : IOutputHandler
