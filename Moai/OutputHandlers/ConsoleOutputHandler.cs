@@ -1,8 +1,8 @@
 using System;
 
-namespace Moai
+namespace Moai.OutputHandlers
 {
-  public class ConsoleOutputHandler
+  public class ConsoleOutputHandler : IOutputHandler
   {
     public void WriteLine(string text)
     {

@@ -1,10 +1,14 @@
+using Moai.OutputHandlers;
+
 namespace Moai
 {
   class Program
   {
     public static void Main (string[] args)
     {
-      var game = new Game();
+      var outputHandler = new ConsoleOutputHandler();
+
+      var game = new Game(outputHandler);
       game.Run();
     }
   }
