@@ -1,2 +1,2 @@
 language = "csharp"
-run = "mcs -out:Moai.exe *.cs | mono Moai.exe"
+run = "bash build_and_run.sh"
