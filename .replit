@@ -1,2 +1,2 @@
 language = "csharp"
-run = "csc /target:exe /out:Moai.exe *.cs | mono Moai.exe"
+run = "mcs -out:Moai.exe *.cs | mono Moai.exe"
