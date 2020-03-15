@@ -6,10 +6,17 @@ namespace Moai
   public class Board
   {
     private List<Being> beings = new List<Being>();
+    private char[][] cells;
+    private IOutputHandler outputHandler;
 
-    public void Display(IOutputHandler outputHandler)
+    public Board(IOutputHandler outputHandler)
     {
-      var cells = new char[][]
+      this.outputHandler = outputHandler;
+    }
+
+    public void Display()
+    {
+      cells = new []
       {
         "#####".ToCharArray(),
         "#   #".ToCharArray(),
@@ -29,7 +36,7 @@ namespace Moai
 
       foreach(var b in beings)
       {
-          outputHandler.WriteAt(b.X, b.Y, b.Sign);
+          outputHandler.WriteAt(b.Position.x, b.Position.y, b.Sign);
       }
 
       outputHandler.WriteAt(0, cells.Length, '\n');
@@ -38,6 +45,34 @@ namespace Moai
     public void AddBeing(Being being)
     {
       beings.Add(being);
+    }
+
+    public void PerformFrame()
+    {
+      foreach(var b in beings)
+      {
+        b.Update();
+      }
+      Redraw();
+    }
+
+    private void Redraw()
+    {
+      foreach(var b in beings)
+      {
+        if(b.ShouldRedraw)
+        {
+          var lastPos = b.LastPosition;
+          var pos = b.Position;
+          var mapSign = cells[lastPos.x][lastPos.y];
+          outputHandler.WriteAt(lastPos.x, lastPos.y, mapSign);
+          outputHandler.WriteAt(pos.x, pos.y, b.Sign);
+     
+          b.ShouldRedraw = false;
+        }
+      }
+
+      outputHandler.WriteAt(0, cells.Length, '\n');
     }
   }
 }

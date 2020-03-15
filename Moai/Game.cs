@@ -1,5 +1,6 @@
 using Moai.OutputHandlers;
 using Moai.InputHandlers;
+using Moai.Components;
 
 namespace Moai
 {
@@ -19,19 +20,23 @@ namespace Moai
       outputHandler.WriteLine("Welcome to Moai 🗿");
       inputHandler.PressAnyKey();
       outputHandler.Clear();
-      var board = new Board();
+      var board = new Board(outputHandler);
       var player = CreatePlayer();
       board.AddBeing(player);
 
-      board.Display(outputHandler);
+      board.Display();
+
+      while(true)
+      {
+        board.PerformFrame();
+      }
     }
 
     public Being CreatePlayer()
     {
       var player = new Being('@');
-      player.X = 2;
-      player.Y = 2;
-//      player.AddComponent<MovingComponent>(new )
+      player.Position = (2, 2);
+      player.AddComponent(new MovingComponent(player));
       return player;
     } 
   }
